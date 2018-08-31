@@ -8,6 +8,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,6 +67,6 @@ public class TaskServiceImpl implements TaskService {
             task.setUser(user.get());
             return taskDAO.findAll(Example.of(task));
         }
-        return new ArrayList<>();
+        return Collections.emptyList();
     }
 }
