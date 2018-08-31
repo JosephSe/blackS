@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     private final UserDAO userDAO;
