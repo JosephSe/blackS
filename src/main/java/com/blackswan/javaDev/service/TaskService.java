@@ -16,4 +16,6 @@ public interface TaskService {
 
     List<Task> getTasks(Long userId);
 
+    void updateStatus();
+
 }

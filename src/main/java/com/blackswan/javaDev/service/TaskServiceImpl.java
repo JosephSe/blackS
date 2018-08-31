@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service("taskService")
 public class TaskServiceImpl implements TaskService {
@@ -69,4 +70,13 @@ public class TaskServiceImpl implements TaskService {
         }
         return Collections.emptyList();
     }
+
+    @Override
+    public void updateStatus() {
+        Task task = new Task();
+        List<Task> pendingTasks = taskDAO.findAll(Example.of(task));
+        List<Task> doneTasks = pendingTasks.stream().peek(System.out::println).map(Task::markAsDone).collect(Collectors.toList());
+        taskDAO.saveAll(doneTasks);
+    }
+
 }
